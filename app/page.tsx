@@ -8,9 +8,10 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 type Project = {
   name: string;
+  problem: string;
+  architecture: string;
   impact: string;
-  summary: string;
-  tech: string[];
+  decisions: string[];
   githubUrl: string;
   liveUrl: string;
 };
@@ -25,55 +26,81 @@ const proof = [
   { value: "10+", label: "Years in engineering" },
   { value: "3B+", label: "Daily messages processed" },
   { value: "120K+", label: "Enterprise users served" },
+  { value: "24+", label: "Engineers led" },
+  { value: "20+", label: "Production releases" },
   { value: "87%", label: "Ticket triage effort reduction" },
 ];
 
-const stackGroups = [
+const whatIBuild = [
   {
-    title: "AI Engineering",
-    items: ["Agentic AI", "RAG", "Azure OpenAI", "LangChain", "LangGraph", "MCP"],
+    title: "Enterprise AI Platforms",
+    items: ["Agentic orchestration", "RAG architecture", "Enterprise copilots"],
   },
   {
-    title: "Cloud & Platform",
-    items: ["Azure", "AKS", "Kubernetes", "Docker", "APIM", "Cosmos DB"],
+    title: "Distributed Cloud-Native Systems",
+    items: ["Event-driven services", "High-throughput processing", "Resilience by design"],
   },
   {
-    title: "Backend & Systems",
-    items: ["C#", ".NET", "Python", "Microservices", "Event-Driven Systems", "REST APIs"],
+    title: "Intelligent Workflow Automation",
+    items: ["Operational AI workflows", "AI-powered modernization", "Automation at scale"],
   },
   {
-    title: "Engineering Excellence",
-    items: ["System Design", "Reliability", "Secure Coding", "CI/CD", "Observability", "Leadership"],
+    title: "Secure & Observable Platforms",
+    items: ["Security-first engineering", "Telemetry and diagnostics", "Reliability governance"],
   },
+];
+
+const currentFocus = [
+  "Agentic AI orchestration for enterprise workflows",
+  "AI-powered operational excellence and ticket automation",
+  "Enterprise RAG systems with strong governance",
+  "Distributed AI workflow architecture on Azure",
+  "Cloud-native AI infrastructure and observability",
+];
+
+const leadershipPoints = [
+  "Led distributed engineering teams across enterprise AI and cloud modernization initiatives.",
+  "Guided architecture reviews, scalability decisions, and roadmap execution for high-availability systems.",
+  "Mentored engineers in backend systems, reliability, observability, and AI platform development.",
+  "Drove secure engineering practices, release governance, and production reliability excellence.",
 ];
 
 const projects: Project[] = [
   {
     name: "Kaseya AI Digital Worker",
-    impact: "87% faster ticket triage",
-    summary:
-      "Architected an Agentic AI platform to automate enterprise support workflows with resilient AKS-based microservices and strong observability.",
-    tech: ["Azure", "AKS", "Agentic AI", "Microservices", "App Insights"],
+    problem:
+      "Enterprise support workflows suffered from manual triaging delays and inconsistent SLA performance.",
+    architecture:
+      "Designed Agentic AI orchestration with event-driven microservices on AKS, plus telemetry-first observability for resilient scaling.",
+    impact:
+      "Reduced ticket triaging effort by 87% (12 minutes to 1.5 minutes), improving response times and operational efficiency.",
+    decisions: ["Agentic workflow engine", "Fault-tolerant async processing", "Telemetry-first platform"] ,
     githubUrl: "https://github.com/abhiguptame",
     liveUrl:
       "https://www.linkedin.com/in/abhiguptame/",
   },
   {
     name: "Enterprise AI Assistant Experience",
-    impact: "120K+ users, 500M+ contexts",
-    summary:
-      "Enabled contextual AI experiences across Microsoft 365 surfaces by integrating enterprise knowledge and large-scale file contexts.",
-    tech: ["Azure AI", "Copilot", "RAG", "Teams", "SharePoint"],
+    problem:
+      "Large enterprise teams needed context-rich AI support across multiple productivity channels.",
+    architecture:
+      "Integrated enterprise knowledge sources and high-volume context pipelines across Web, Microsoft 365 Copilot, Teams, and SharePoint.",
+    impact:
+      "Enabled multi-channel AI assistance for 120K+ users with 500M+ knowledge/file contexts to improve answer relevance.",
+    decisions: ["Context federation", "Multi-channel delivery", "Enterprise access controls"],
     githubUrl: "https://github.com/abhiguptame",
     liveUrl:
       "https://www.linkedin.com/in/abhiguptame/",
   },
   {
     name: "Renault-Nissan Connected Platform",
-    impact: "63% per-vehicle cost optimization",
-    summary:
-      "Scaled connected-car event-driven platforms across multiple products while maintaining release quality and near-zero high-severity incidents.",
-    tech: ["Event Hub", "Service Bus", "Distributed Systems", "Azure", "Reliability"],
+    problem:
+      "Connected-vehicle product lines required scalable event processing with strict release and reliability expectations.",
+    architecture:
+      "Architected event-driven cloud-native platform services across 8+ products with strong release governance and reliability controls.",
+    impact:
+      "Reduced per-vehicle platform cost by 63% (EUR 0.54 to EUR 0.20) while sustaining production quality across ~20 releases.",
+    decisions: ["Domain-aligned service boundaries", "Cost-aware architecture", "Release quality gates"],
     githubUrl: "https://github.com/abhiguptame",
     liveUrl:
       "https://www.linkedin.com/in/abhiguptame/",
@@ -108,6 +135,14 @@ const achievements = [
   "Led architecture and delivery for multi-team programs, including pods spanning 24+ engineers.",
   "Built high-throughput systems processing 3B+ daily messages across enterprise workloads.",
   "Drove global stakeholder collaboration across US, EU, and EMEA engineering organizations.",
+];
+
+const principles = [
+  "Build for reliability first",
+  "Design for scale from day one",
+  "Optimize for observability and fast diagnostics",
+  "Prefer platform thinking over feature thinking",
+  "Automate operational complexity wherever possible",
 ];
 
 const blogs = [
@@ -159,16 +194,18 @@ export default function Home() {
             </span>
             <span className="hidden sm:block">
               <span className="block text-sm font-semibold text-white light:text-slate-900">Abhishek Kumar Gupta</span>
-              <span className="block text-xs text-slate-400 light:text-slate-600">Senior Consultant | AI Engineer | Architect in Progress</span>
+              <span className="block text-xs text-slate-400 light:text-slate-600">Lead Software Development Engineer | Distributed Systems & AI Architect</span>
             </span>
           </a>
 
           <nav className="hidden items-center gap-2 md:flex">
             {[
               ["About", "about"],
-              ["Stack", "stack"],
-              ["Projects", "projects"],
+              ["What I Build", "build"],
+              ["Leadership", "leadership"],
+              ["Case Studies", "projects"],
               ["Experience", "experience"],
+              ["Focus", "focus"],
               ["Blogs", "blogs"],
               ["Contact", "contact"],
             ].map(([label, id]) => (
@@ -218,7 +255,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
             >
-              Transforming ideas into intelligent systems with production-grade architecture and engineering rigor.
+              Engineering leader building scalable AI platforms, distributed systems, and enterprise-grade cloud-native solutions.
             </motion.h1>
             <motion.p
               className="mt-6 max-w-3xl text-balance text-base text-slate-300 sm:text-lg light:text-slate-600"
@@ -226,7 +263,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              I design and ship scalable AI platforms, distributed backend systems, and modern cloud-native experiences across Microsoft, automotive, enterprise security, and innovation programs.
+              Specialized in Agentic AI, platform engineering, distributed architectures, and high-scale enterprise systems powering operational excellence and intelligent automation.
             </motion.p>
 
             <motion.div
@@ -280,13 +317,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stack" className="section-shell pt-20">
+        <section id="build" className="section-shell pt-20">
           <Reveal>
-            <p className="kicker">Skills and Technology</p>
-            <h2 className="section-title mt-3 text-white light:text-slate-900">AI, cloud, and systems depth for real-world products.</h2>
+            <p className="kicker">What I Build</p>
+            <h2 className="section-title mt-3 text-white light:text-slate-900">Platforms engineered for scale, reliability, and intelligent automation.</h2>
           </Reveal>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {stackGroups.map((group, index) => (
+            {whatIBuild.map((group, index) => (
               <Reveal key={group.title} delay={index * 0.05}>
                 <article className="glass rounded-2xl p-6 transition hover:-translate-y-0.5">
                   <h3 className="font-display text-2xl text-white light:text-slate-900">{group.title}</h3>
@@ -303,10 +340,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="leadership" className="section-shell pt-20">
+          <Reveal>
+            <p className="kicker">Engineering Leadership</p>
+            <h2 className="section-title mt-3 text-white light:text-slate-900">Driving technical direction, delivery quality, and platform excellence.</h2>
+          </Reveal>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {leadershipPoints.map((point, index) => (
+              <Reveal key={point} delay={index * 0.05}>
+                <article className="glass rounded-2xl p-6 text-sm leading-relaxed text-slate-300 light:text-slate-600">
+                  {point}
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         <section id="projects" className="section-shell pt-20">
           <Reveal>
-            <p className="kicker">Projects</p>
-            <h2 className="section-title mt-3 text-white light:text-slate-900">Engineering outcomes that move business metrics.</h2>
+            <p className="kicker">Case Studies</p>
+            <h2 className="section-title mt-3 text-white light:text-slate-900">Architecture decisions, scale challenges, and business impact.</h2>
           </Reveal>
 
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
@@ -320,11 +373,15 @@ export default function Home() {
                 whileHover={{ y: -6 }}
                 className="glass shine-border group rounded-2xl p-6"
               >
-                <p className="kicker !text-brand-200 light:!text-brand-700">{project.impact}</p>
                 <h3 className="mt-2 font-display text-2xl text-white light:text-slate-900">{project.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300 light:text-slate-600">{project.summary}</p>
+                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-400 light:text-slate-500">Problem</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-300 light:text-slate-600">{project.problem}</p>
+                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-400 light:text-slate-500">Architecture</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-300 light:text-slate-600">{project.architecture}</p>
+                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-brand-200 light:text-brand-700">Impact</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-200 light:text-slate-700">{project.impact}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tech.map((tag) => (
+                  {project.decisions.map((tag) => (
                     <span key={tag} className="rounded-md bg-brand-400/10 px-2 py-1 text-xs text-brand-200 light:bg-brand-100 light:text-brand-700">
                       {tag}
                     </span>
@@ -341,6 +398,20 @@ export default function Home() {
               </motion.article>
             ))}
           </div>
+
+          <Reveal className="mt-8">
+            <article className="glass rounded-2xl p-6">
+              <p className="kicker">Architecture Snapshot</p>
+              <h3 className="mt-2 font-display text-2xl text-white light:text-slate-900">Agentic Workflow + RAG + Event Platform</h3>
+              <div className="mt-5 grid gap-3 text-xs sm:grid-cols-5">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-slate-200 light:border-slate-300 light:bg-slate-100 light:text-slate-700">Sources</div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-slate-200 light:border-slate-300 light:bg-slate-100 light:text-slate-700">RAG Layer</div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-slate-200 light:border-slate-300 light:bg-slate-100 light:text-slate-700">Agent Orchestrator</div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-slate-200 light:border-slate-300 light:bg-slate-100 light:text-slate-700">Event Services</div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-slate-200 light:border-slate-300 light:bg-slate-100 light:text-slate-700">Ops Insights</div>
+              </div>
+            </article>
+          </Reveal>
         </section>
 
         <section id="experience" className="section-shell pt-20">
@@ -402,6 +473,34 @@ export default function Home() {
                   <h3 className="font-display text-2xl text-white light:text-slate-900">{card.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-slate-300 light:text-slate-600">{card.text}</p>
                 </motion.article>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section id="focus" className="section-shell pt-20">
+          <Reveal>
+            <p className="kicker">Currently Focused On</p>
+            <h2 className="section-title mt-3 text-white light:text-slate-900">Where I am investing my architecture and AI efforts now.</h2>
+          </Reveal>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {currentFocus.map((item, index) => (
+              <Reveal key={item} delay={index * 0.04}>
+                <article className="glass rounded-2xl p-5 text-sm text-slate-300 light:text-slate-600">{item}</article>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section id="principles" className="section-shell pt-20">
+          <Reveal>
+            <p className="kicker">Engineering Principles</p>
+            <h2 className="section-title mt-3 text-white light:text-slate-900">Leadership principles that shape how I design and ship systems.</h2>
+          </Reveal>
+          <div className="mt-8 grid gap-4 md:grid-cols-5">
+            {principles.map((item, index) => (
+              <Reveal key={item} delay={index * 0.05}>
+                <article className="glass rounded-2xl p-5 text-sm text-slate-300 light:text-slate-600">{item}</article>
               </Reveal>
             ))}
           </div>
