@@ -180,13 +180,13 @@ export default function Home() {
   );
 
   return (
-    <div className="relative isolate overflow-x-hidden pb-16 light:bg-slate-50">
+    <div className="relative isolate overflow-x-clip pb-16 light:bg-slate-50">
       <ScrollProgress />
 
       <div className="pointer-events-none fixed inset-0 -z-20 hero-grid" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_120%,rgba(56,189,248,0.16),transparent_60%)]" />
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl light:border-slate-200 light:bg-white/80">
+      <header className="sticky inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl light:border-slate-200 light:bg-white/80">
         <div className="section-shell flex h-16 items-center justify-between gap-4">
           <a href="#top" className="flex items-center gap-3">
             <span className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20 light:border-slate-300">
